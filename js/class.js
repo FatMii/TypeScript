@@ -1,33 +1,28 @@
-class Person {
-  public static staticInfo: string = "staticInfo";
-  public name: string;
-  constructor(name: string) {
-    this.name = name;
-  }
-
-  say(): void {
-    console.log(this.name);
-  }
-
-  getName(): string {
-    return this.name;
-  }
-
-  setName(name: string) {
-    this.name = name;
-  }
-  static staticSay() {
-    console.log("I am static function");
-  }
-}
-
+"use strict";
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.say = function () {
+        console.log(this.name);
+    };
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+    Person.prototype.setName = function (name) {
+        this.name = name;
+    };
+    Person.staticSay = function () {
+        console.log("I am static function");
+    };
+    Person.staticInfo = "staticInfo";
+    return Person;
+}());
 Person.staticSay();
-
-let p = new Person("owllai");
+var p = new Person("owllai");
 p.setName("hero");
 console.log(p.getName());
-
-/* 
+/*
 普通继承
 class Student extends Person {
   constructor(name: string) {
@@ -36,10 +31,9 @@ class Student extends Person {
 }
 
 let student = new Student("学生");
-console.log(student.getName()); 
+console.log(student.getName());
 */
-
-/* 
+/*
 class Student extends Person {
   age: number;
   constructor(name: string, age: number) {
@@ -58,13 +52,11 @@ class Student extends Person {
 
 let student = new Student("张三",18);
 console.log(student.getAge()); */
-
 /**
  * public:
  * protected:类里和子类可访问,外部无法访问
  * private:类里可访问,子类和外部无法访问
  */
-
 //多态:父类定义一个方法不实现,由子类来实现
 /**
  * class Animal {
@@ -103,13 +95,12 @@ console.log(dog.eat());
 let cat = new Cat("cat")
 console.log(cat.eat());
  */
-
 /**
  * 抽象类:不可实例化
  * 抽象方法只能放在抽象类里面
- * 
- * 
- * 
+ *
+ *
+ *
  *    abstract class Animal {
           abstract eat(): void;
         }
@@ -128,5 +119,3 @@ console.log(cat.eat());
         let dog = new Dog("dog");
         dog.eat()
  */
-
-
