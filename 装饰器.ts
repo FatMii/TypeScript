@@ -34,7 +34,7 @@ class HttpClient {
 var httpClient = new HttpClient(); */
 
 //操作构造函数
-function logClass(params: any) {
+/* function logClass(params: any) {
   console.log(params);
   return class extends params {
     url: string = "被修改后的url";
@@ -56,6 +56,25 @@ class HttpClient {
 }
 
 var httpClient = new HttpClient("xxxx");
-httpClient.getData();
+httpClient.getData(); */
 
-//2.
+//2.属性装饰器
+
+function logProperty(params: any) {
+  return function (target: any,arr:any) {
+    console.log(params);
+    console.log(target);
+    console.log(arr);
+    target[arr] =params
+  };
+}
+class HttpClient {
+  @logProperty("test")
+  public url: string | undefined;
+  constructor(url: string) {
+    this.url = url;
+  }
+}
+
+var httpClient = new HttpClient("xxxx");
+console.log(httpClient.url);
