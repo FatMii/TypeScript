@@ -78,3 +78,5 @@ class HttpClient {
 
 var httpClient = new HttpClient("xxxx");
 console.log(httpClient.url);
+
+//3.装饰器执行顺序 属性=>方法=>方法参数=>类 ,如果有多个相同类型的装饰器,执行顺序从后到前
