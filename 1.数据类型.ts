@@ -2,9 +2,19 @@ let b: Boolean = true;
 let n: Number = 123;
 let s: String = "123";
 
+//数组类型
+//1.简单方式
 let ar: number[] = [1, 2, 3, 4];
 let ar1: string[] = ["1", "2"];
+//2.数组泛型方式
 let arr: Array<String> = ["1", "2"];
+//3.interface方式
+interface UserArr1 {
+  [index: number]: string;
+}
+
+let userArr1: UserArr1 = ["1", "2"];
+console.log(userArr);
 
 //元组类型,属于数组的一种,指定数组内部元素的类型
 let tup: [string, number, boolean] = ["1", 1, true];

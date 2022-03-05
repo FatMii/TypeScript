@@ -9,10 +9,11 @@
 //1.属性接口
 interface MyUser {
   name?: string; //可选属性
-  age: number;
+  readonly age: number;
 }
 
 function printUser(usr: MyUser): void {
+  //usr.age = 1;报错,因为是readonly
   console.log(usr);
 }
 
