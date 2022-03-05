@@ -7,16 +7,21 @@
  */
 
 //1.属性接口
-interface User {
+interface MyUser {
   name?: string; //可选属性
   age: number;
 }
 
-function printUser(usr: User): void {
+function printUser(usr: MyUser): void {
   console.log(usr);
 }
 
-printUser({ name: "owllai", age: 18 });
+let usr1: MyUser = {
+  name: "owllai",
+  age: 18,
+};
+
+printUser(usr1);
 printUser({ age: 18 });
 
 //2. 函数类型接口
