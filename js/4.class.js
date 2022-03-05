@@ -28,6 +28,10 @@ class Student extends Person {
   constructor(name: string) {
     super(name);
   }
+    say(): void {
+    //spuer正常只能在构造函数中使用，下面使用相当于是代表父类的原型对象
+    spuer.say()
+  }
 }
 
 let student = new Student("学生");
