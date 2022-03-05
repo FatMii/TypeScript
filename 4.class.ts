@@ -64,9 +64,9 @@ let student = new Student("张三",18);
 console.log(student.getAge()); */
 
 /**
- * public:
- * protected:类里和子类可访问,外部无法访问
- * private:类里可访问,子类和外部无法访问
+ * public:1.自身调用 2.实例调用 3.子类调用
+ * protected:1.自身调用 2.子类调用  3.实例调用不能调用  4.外部无法访问
+ * private:1.自身调用  2.子类和外部无法访问
  */
 
 //多态:父类定义一个方法不实现,由子类来实现
