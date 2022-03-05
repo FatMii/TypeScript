@@ -18,6 +18,8 @@ enum Flag {
 let f: Flag = Flag.fail;
 console.log(f); //0
 
+//any类型
+//缺点:any类型的对象访问不存在的属性,运行时才会报错
 let a: any = undefined;
 let a1: any = null;
 let a2: any = 1;
