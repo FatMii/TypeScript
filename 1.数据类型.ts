@@ -22,14 +22,6 @@ console.log(userArr);
 let tup: [string, number, boolean] = ["1", 1, true];
 
 
-//枚举类型,如果不赋值,值就是索引值
-enum Flag {
-  fail = 0,
-  success = 1,
-}
-
-let f: Flag = Flag.fail;
-console.log(f); //0
 
 //any类型
 //缺点:any类型的对象访问不存在的属性,运行时才会报错

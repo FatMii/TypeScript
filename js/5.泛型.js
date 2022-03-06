@@ -61,3 +61,16 @@ u1.username = "owllai";
 u1.password = "123456";
 var db = new mysqlDB();
 db.add(u1);
+function loggingIdentity(arg) {
+    console.log(arg.length); // Now we know it has a .length property, so no more error
+    return arg;
+}
+//loggingIdentity(3);  // Error, number doesn't have a .length property
+loggingIdentity({ length: 10, value: 3 });
+//在泛型约束中使用类型参数
+function getProperty(obj, key) {
+    return obj[key];
+}
+var x = { a: 1, b: 2, c: 3, d: 4 };
+getProperty(x, "a"); // okay
+//getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.

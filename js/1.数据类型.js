@@ -11,15 +11,8 @@ var arr = ["1", "2"];
 var userArr1 = ["1", "2"];
 console.log(userArr);
 //元组类型,属于数组的一种,指定数组内部元素的类型
+//当访问一个越界的元素，会使用联合类型替代：
 var tup = ["1", 1, true];
-//枚举类型,如果不赋值,值就是索引值
-var Flag;
-(function (Flag) {
-    Flag[Flag["fail"] = 0] = "fail";
-    Flag[Flag["success"] = 1] = "success";
-})(Flag || (Flag = {}));
-var f = Flag.fail;
-console.log(f); //0
 //any类型
 //缺点:any类型的对象访问不存在的属性,运行时才会报错
 var a = undefined;

@@ -66,6 +66,32 @@ var u1 = new User();
 u1.username = "owllai";
 u1.password = "123456";
 
-
 var db = new mysqlDB<User>();
 db.add(u1);
+
+//5.泛型约束
+//相比于操作any所有类型，我们想要限制函数去处理任意带有.length属性的所有类型。
+//只要传入的类型有这个属性，我们就允许，就是说至少包含这一属性。 为此，我们需要列出对于T的约束要求。
+//为此，我们定义一个接口来描述约束条件。 创建一个包含 .length属性的接口，使用这个接口和extends关键字来实现约束：
+
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length); // Now we know it has a .length property, so no more error
+  return arg;
+}
+
+//loggingIdentity(3);  // Error, number doesn't have a .length property
+loggingIdentity({ length: 10, value: 3 });
+
+//在泛型约束中使用类型参数
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+getProperty(x, "a"); // okay
+//getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
