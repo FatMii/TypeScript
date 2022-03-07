@@ -7,3 +7,4 @@ declare namespace myLib {
     function makeGreeting(s: string): string;
     let numberOfGreetings: number;
 }
+//interface 和 type 不需要写declare
