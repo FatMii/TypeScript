@@ -1,9 +1,12 @@
 "use strict";
 //枚举类型,如果不赋值,值就是索引值
-var Flag;
-(function (Flag) {
-    Flag[Flag["fail"] = 0] = "fail";
-    Flag[Flag["success"] = 1] = "success";
-})(Flag || (Flag = {}));
-var f = Flag.fail;
+//1.数字枚举
+var Direction;
+(function (Direction) {
+    Direction[Direction["Up"] = 1] = "Up";
+    Direction[Direction["Down"] = 2] = "Down";
+    Direction[Direction["Left"] = 3] = "Left";
+    Direction[Direction["Right"] = 4] = "Right";
+})(Direction || (Direction = {}));
+var f = Direction.Up;
 console.log(f); //0
