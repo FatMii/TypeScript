@@ -1,1 +1,1 @@
-/Declaration_document/node_modules
+./Declaration_document/node_modules/*
