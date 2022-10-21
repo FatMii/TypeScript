@@ -22,21 +22,21 @@ getResultInfo(1, 2, 3, 4, 5);
 
 //this指向
 
-let deck = {
-  suits: ["hearts", "spades", "clubs", "diamonds"],
-  cards: Array(52),
-  createCardPicker: function () {
-    console.log(this);
-    return function () {
-      let pickedCard = Math.floor(Math.random() * 52);
-      let pickedSuit = Math.floor(pickedCard / 13);
+// let deck = {
+//   suits: ["hearts", "spades", "clubs", "diamonds"],
+//   cards: Array(52),
+//   createCardPicker: function () {
+//     console.log(this);
+//     return function () {
+//       let pickedCard = Math.floor(Math.random() * 52);
+//       let pickedSuit = Math.floor(pickedCard / 13);
      
-      return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
-    };
-  },
-};
+//       return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
+//     };
+//   },
+// };
 
-let cardPicker = deck.createCardPicker();
-let pickedCard = cardPicker();
+// let cardPicker = deck.createCardPicker();
+// let pickedCard = cardPicker();
 
-alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+// alert("card: " + pickedCard.card + " of " + pickedCard.suit);

@@ -20,18 +20,18 @@ getResultInfo(1, 2, 3, 4, 5);
   getName("2", 1);
    */
 //this指向
-var deck = {
-    suits: ["hearts", "spades", "clubs", "diamonds"],
-    cards: Array(52),
-    createCardPicker: function () {
-        console.log(this);
-        return function () {
-            var pickedCard = Math.floor(Math.random() * 52);
-            var pickedSuit = Math.floor(pickedCard / 13);
-            return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
-        };
-    },
-};
-var cardPicker = deck.createCardPicker();
-var pickedCard = cardPicker();
-alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+// let deck = {
+//   suits: ["hearts", "spades", "clubs", "diamonds"],
+//   cards: Array(52),
+//   createCardPicker: function () {
+//     console.log(this);
+//     return function () {
+//       let pickedCard = Math.floor(Math.random() * 52);
+//       let pickedSuit = Math.floor(pickedCard / 13);
+//       return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
+//     };
+//   },
+// };
+// let cardPicker = deck.createCardPicker();
+// let pickedCard = cardPicker();
+// alert("card: " + pickedCard.card + " of " + pickedCard.suit);

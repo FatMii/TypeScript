@@ -10,3 +10,12 @@ var Direction;
 })(Direction || (Direction = {}));
 var f = Direction.Up;
 console.log(f); //0
+//2.字符串枚举
+//3.反向映射
+//注意:不会为字符串枚举成员生成反向映射。
+var Enum;
+(function (Enum) {
+    Enum[Enum["A"] = 0] = "A";
+})(Enum || (Enum = {}));
+var enumA = Enum.A;
+var nameOfA = Enum[a]; // "A"
