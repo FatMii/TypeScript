@@ -1,5 +1,12 @@
 # TypeScript
 
+## 优点
+
++ 类型检查
++ 面向对象
++ 接口
++ 泛型 
+
 
 安装：npm install -g typescript
 
