@@ -16,20 +16,23 @@ interface UserArr1 {
 let userArr1: UserArr1 = ["1", "2"];
 console.log(userArr);
 
-//元组类型,属于数组的一种,指定数组内部元素的类型
+//3.元组类型,属于数组的一种,指定数组内部元素的类型
 //当访问一个越界的元素，会使用联合类型替代：
 
 let tup: [string, number, boolean] = ["1", 1, true];
 
-//any类型
+//4.any类型
 //缺点:any类型的对象访问不存在的属性,运行时才会报错
 let a: any = undefined;
 let a1: any = null;
 let a2: any = 1;
 
-//unknown类型，可以看作是安全版的any类型
+//5.unknown类型，可以看作是安全版的any类型
+//unknown类型和any的最大区别：
+//任何类型的值可以赋值给any，同时any类型的值也可以赋值给任何类型。
+//unknown 任何类型的值都可以赋值给它，但它只能赋值给unknown和any
 
-//void类型,一般只用在函数没有返回值
+//6.void类型,一般只用在函数没有返回值
 function get(): void {}
 
 //null和undefined是所有类型的子类型
