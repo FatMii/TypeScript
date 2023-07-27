@@ -6,8 +6,11 @@ let s: String = "123";
 //1.简单方式
 let ar: number[] = [1, 2, 3, 4];
 let ar1: string[] = ["1", "2"];
+
 //2.数组泛型方式
 let arr: Array<String> = ["1", "2"];
+
+
 //3.interface方式
 interface UserArr1 {
   [index: number]: string;
