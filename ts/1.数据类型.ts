@@ -10,14 +10,13 @@ let ar1: string[] = ["1", "2"];
 //2.数组泛型方式
 let arr: Array<String> = ["1", "2"];
 
-
 //3.interface方式
 interface UserArr1 {
   [index: number]: string;
 }
 
 let userArr1: UserArr1 = ["1", "2"];
-console.log(userArr);
+console.log(userArr1);
 
 //3.元组类型,属于数组的一种,指定数组内部元素的类型
 //当访问一个越界的元素，会使用联合类型替代：
@@ -38,7 +37,7 @@ let a2: any = 1;
 //6.void类型,一般只用在函数没有返回值
 function get(): void {}
 
-//null和undefined是所有类型的子类型
+//7.null和undefined是所有类型的子类型
 //null类型
 let p2 = null;
 p2 = 12;
@@ -48,7 +47,7 @@ let u: undefined = undefined;
 let u2 = undefined;
 u2 = 12;
 
-//never类型表示的是那些永不存在的值的类型
+//8.never类型表示的是那些永不存在的值的类型
 //例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；
 //变量也可能是 never类型，当它们被永不为真的类型保护所约束时。
 //never类型包含(null,undefined)
@@ -67,6 +66,16 @@ function fail() {
 function infiniteLoop(): never {
   while (true) {}
 }
+
+//9.枚举
+enum Color {
+  RED = "红色",
+  PINK = "粉色",
+  BLUE = "蓝色",
+}
+
+const pink: Color = Color.PINK;
+console.log(pink); // 粉色
 
 //Object
 //object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
