@@ -77,27 +77,49 @@ enum Color {
 const pink: Color = Color.PINK;
 console.log(pink); // 粉色
 
-//Object
+//10.Object
 //object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
 
-//交叉类型
-
-//type C = A & B
-// interface Props {
-//   name: string;
-//   age: number;
-// }
-// interface WithHOCProps {
-//   options: {
-//     size: number;
-//   };
-// }
-
-// const App: React.FC<Props & WithHOCProps> = ({ options }) => {
-//   options.size; // number
-// };
-
-//联合类型:1.赋值的时候确定是哪个类型
+//11.联合类型:1.赋值的时候确定是哪个类型
 // let variable: string | number;
 // variable = "to be or not to be";
 // variable = 1;
+
+//12.类型别名,一般用于联合类型
+//用来给一个类型起个新名字。它只是起了一个新名字，并没有创建新类型
+// type count = number | number[];
+// function hello(value: count) {}
+
+//13.交叉类型:交叉类型就是两个类型必须存在
+interface IpersonA {
+  name: string;
+  age: number;
+}
+interface IpersonB {
+  name: string;
+  gender: string;
+}
+
+let person: IpersonA & IpersonB = {
+  name: "师爷",
+  age: 18,
+  gender: "男",
+};
+
+//如果两个类型中含有相同的key但是类型不同呢,则该key为never类型
+// interface IpersonA {
+//   name: string
+// }
+
+// interface IpersonB {
+//   name: number
+// }
+
+// function testAndFn(params: IpersonA & IpersonB) {
+//   console.log(params)
+// }
+
+// testAndFn({name: "黄老爷"}) // error TS2322: Type 'string' is not assignable to type 'never'.
+
+
+//14.类型守卫
