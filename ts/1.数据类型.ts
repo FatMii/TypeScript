@@ -98,4 +98,6 @@ console.log(pink); // 粉色
 // };
 
 //联合类型:1.赋值的时候确定是哪个类型
-//let a = number | string
+// let variable: string | number;
+// variable = "to be or not to be";
+// variable = 1;
