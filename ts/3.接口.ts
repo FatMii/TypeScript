@@ -169,6 +169,7 @@ let value: MyType2 = {
 // type List = [string, boolean, number];
 
 //interface能够合并声明，而type不行
+
 interface Person {
   name: string
 }

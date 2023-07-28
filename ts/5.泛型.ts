@@ -107,6 +107,16 @@ let x = { a: 1, b: 2, c: 3, d: 4 };
 getProperty(x, "a"); // okay
 //getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
 
+//泛型约束接口
+interface IKeyValue<T, U> {
+  key: T
+  value: U
+}
+
+const k1:IKeyValue<number, string> = { key: 18, value: 'lin'}
+const k2:IKeyValue<string, number> = { key: 'lin', value: 18}
+
+
 //泛型参数的默认类型
 function createArray<T = string>(length: number, value: T): Array<T> {
   let result: T[] = [];
