@@ -13,11 +13,11 @@ getInfo<number>(123);
 getInfo<string>("1234");
 
 //多个参数
-function getValue<T, U>(arg:[T,U]):[T,U] {
+function getValue<T, U>(arg: [T, U]): [T, U] {
   return arg;
 }
 // 使用
-const towParams = getValue(['树哥', 18]);
+const towParams = getValue(["树哥", 18]);
 
 //2.泛型类
 class MinClass<T> {
@@ -107,7 +107,6 @@ let x = { a: 1, b: 2, c: 3, d: 4 };
 getProperty(x, "a"); // okay
 //getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
 
-
 //泛型参数的默认类型
 function createArray<T = string>(length: number, value: T): Array<T> {
   let result: T[] = [];
@@ -117,7 +116,32 @@ function createArray<T = string>(length: number, value: T): Array<T> {
   return result;
 }
 
-
 //泛型工具类型
-//typeof
+//(1)keyof
+// interface Person {
+//   name: string;
+//   age: number;
+//   gender: "male" | "female";
+// }
 
+// type PersonKey = keyof Person; //type PersonKey = 'name'|'age'|'gender';
+
+// function getValueByKey(p: Person, key: PersonKey) {
+//   return p[key];
+// }
+// let val = getValueByKey({ name: "树哥", age: 18, gender: "male" }, "name");
+// console.log(val); // 树哥
+
+//(2) in
+
+type Keys = "a" | "b" | "c";
+
+type Obj = {
+  [p in Keys]: any;
+}; // -> { a: any, b: any, c: any }
+
+//(3) infer 在条件类型语句中，可以用 infer 声明一个类型变量并且对它进行使用。
+//    infer R 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。
+type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
+
+//(4) extends 有时候我们定义的泛型不想过于灵活或者说想继承某些类等，可以通过 extends 关键字添加泛型约束。
