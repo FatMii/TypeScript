@@ -1,5 +1,9 @@
 console.log("泛型:");
+//泛型是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
+//举个例子，比如我们现在有个这样的需求，我们要实现一个这样的函数，函数的参数可以是任何值，
+//返回值就是将参数原样返回，并且参数的类型是 string，函数返回类型就为 string？
 //1.泛型函数
+//泛型的语法是尖括号 <> 里面写类型参数，一般用 T 来表示第一个类型变量名称，其实它可以用任何有效名称来代替,比如我们用NIUBI也是编译正常的
 function getInfo<T>(value: T): T {
   console.log(value);
   return value;
@@ -7,6 +11,13 @@ function getInfo<T>(value: T): T {
 
 getInfo<number>(123);
 getInfo<string>("1234");
+
+//多个参数
+function getValue<T, U>(arg:[T,U]):[T,U] {
+  return arg;
+}
+// 使用
+const towParams = getValue(['树哥', 18]);
 
 //2.泛型类
 class MinClass<T> {
@@ -95,3 +106,18 @@ let x = { a: 1, b: 2, c: 3, d: 4 };
 
 getProperty(x, "a"); // okay
 //getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
+
+
+//泛型参数的默认类型
+function createArray<T = string>(length: number, value: T): Array<T> {
+  let result: T[] = [];
+  for (let i = 0; i < length; i++) {
+    result[i] = value;
+  }
+  return result;
+}
+
+
+//泛型工具类型
+//typeof
+
