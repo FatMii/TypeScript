@@ -69,6 +69,35 @@ console.log(student.getAge()); */
  * private:1.自身调用  2.子类和外部无法访问
  */
 
+
+/**
+ * 抽象类:不可实例化
+ * 抽象方法只能放在抽象类里面
+ * 抽象方法一定要实现
+ * 
+ * 
+ * 
+ *    abstract class Animal {
+          abstract eat(): void;
+        }
+
+        class Dog extends Animal {
+          name: string;
+          constructor(name: string) {
+            super();
+            this.name = name;
+          }
+          eat(): void {
+            console.log("dog is eating");
+          }
+        }
+
+        let dog = new Dog("dog");
+        dog.eat()
+ */
+
+
+
 //多态:父类定义一个方法不实现,由子类来实现
 /**
  * class Animal {
@@ -106,32 +135,6 @@ console.log(dog.eat());
 
 let cat = new Cat("cat")
 console.log(cat.eat());
- */
-
-/**
- * 抽象类:不可实例化
- * 抽象方法只能放在抽象类里面
- * 抽象方法一定要实现
- * 
- * 
- * 
- *    abstract class Animal {
-          abstract eat(): void;
-        }
-
-        class Dog extends Animal {
-          name: string;
-          constructor(name: string) {
-            super();
-            this.name = name;
-          }
-          eat(): void {
-            console.log("dog is eating");
-          }
-        }
-
-        let dog = new Dog("dog");
-        dog.eat()
  */
 
 

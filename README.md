@@ -7,6 +7,10 @@
 - 接口
 - 泛型
 
+## 缺点
+
+## 运行准备
+```
 安装：npm install -g typescript
 
 查看版本 tsc -v
@@ -22,6 +26,7 @@ tsc -w 执行启动
 如果不想每次都手动编译，可以安装 ts-node 插件
 
 ts-node index.ts
+```
 
 ```
 配置文件

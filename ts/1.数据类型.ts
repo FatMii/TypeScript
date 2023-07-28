@@ -37,8 +37,10 @@ let a2: any = 1;
 //6.void类型,一般只用在函数没有返回值
 function get(): void {}
 
-//7.null和undefined是所有类型的子类型
-//null类型
+//7.null类型
+//null和undefined是所有类型的子类型
+//但是如果指定了 --strictNullChecks 标记，null 和 undefined 只能赋值给 void 和它们各自，不然会报错。
+
 let p2 = null;
 p2 = 12;
 
@@ -48,6 +50,7 @@ let u2 = undefined;
 u2 = 12;
 
 //8.never类型表示的是那些永不存在的值的类型
+//never 类型是任何类型的子类型，也可以赋值给任何类型
 //例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；
 //变量也可能是 never类型，当它们被永不为真的类型保护所约束时。
 //never类型包含(null,undefined)
