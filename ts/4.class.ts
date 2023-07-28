@@ -69,7 +69,6 @@ console.log(student.getAge()); */
  * private:1.自身调用  2.子类和外部无法访问
  */
 
-
 /**
  * 抽象类:不可实例化
  * 抽象方法只能放在抽象类里面
@@ -95,8 +94,6 @@ console.log(student.getAge()); */
         let dog = new Dog("dog");
         dog.eat()
  */
-
-
 
 //多态:父类定义一个方法不实现,由子类来实现
 /**
@@ -137,4 +134,37 @@ let cat = new Cat("cat")
 console.log(cat.eat());
  */
 
+//interface与class
+//处理公共的属性和方法
+//不同的类有一些共同的属性和方法，使用继承很难完成。
+//比如汽车（Car 类）也有播放音乐的功能，你可以这么做：
+//用 Car 类继承 Cellphone 类
+//找一个 Car 类和 Cellphone 类的父类，父类有播放音乐的方法，他们俩继承这个父类
+//很显然这两种方法都不合常理
+//用implement可以轻松解决一个问题
 
+interface MusicInterface {
+  playMusic(): void;
+}
+
+class Car implements MusicInterface {
+  playMusic() {}
+}
+
+class Cellphone implements MusicInterface {
+  playMusic() {}
+}
+
+//使用 implements 只能约束类实例上的属性和方法，要约束构造函数和静态属性，需要这么写。
+interface CircleStatic {
+  new (radius: number): void
+  pi: number
+}
+
+const Circle:CircleStatic = class Circle {
+  static pi: 3.14
+  public radius: number
+  public constructor(radius: number) {
+      this.radius = radius
+  }
+}

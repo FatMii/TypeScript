@@ -19,3 +19,13 @@ enum Enum {
 }
 let enumA = Enum.A;
 let nameOfA = Enum[a]; // "A"
+//反向映射原理
+//枚举是如何做到反向映射的呢，我们不妨来看一下被编译后的代码
+
+// var Direction;
+// (function (Direction) {
+//     Direction[Direction["Up"] = 6] = "Up";
+//     Direction[Direction["Down"] = 7] = "Down";
+//     Direction[Direction["Left"] = 8] = "Left";
+//     Direction[Direction["Right"] = 9] = "Right";
+// })(Direction || (Direction = {}));
