@@ -1,3 +1,6 @@
+// 接口是对象的状态(属性)和行为(方法)的抽象(描述)
+
+
 /**
  * 属性接口
  * 函数类型接口
@@ -109,3 +112,66 @@ var p1: P = { name: "1", age: 28, sex: "2" };
 
 
 //7.混合类型
+
+
+//type与interface差异与相同
+//type不会创建一个新类型
+//语法不同
+// type MyTYpe = {
+//   name: string;
+//   say(): void;
+// }
+
+// interface MyInterface {
+//   name: string;
+//   say(): void;
+// }
+
+//都允许扩展
+interface MyInterface {
+  name: string;
+  say(): void;
+}
+
+interface MyInterface2 extends MyInterface {
+  sex: string;
+}
+
+let person1:MyInterface2 = {
+  name:'树哥',
+  sex:'男',
+  say(): void {
+    console.log("hello 啊，树哥！");
+  }
+}
+//type 使用 & 实现扩展
+type MyType = {
+  name:string;
+  say(): void;
+}
+type MyType2 = MyType & {
+  sex:string;
+}
+let value: MyType2 = {
+  name:'树哥',
+  sex:'男',
+  say(): void {
+    console.log("hello 啊，树哥！");
+  }
+}
+
+
+//type可以声明基本数据类型别名/联合类型/元组等，而interface不行
+// type Username = string;
+// type Username = string |number
+// // 联合类型
+// type Animal = Pig | Dog | Cat;
+// type List = [string, boolean, number];
+
+//interface能够合并声明，而type不行
+interface Person {
+  name: string
+}
+interface Person {
+  age: number
+}

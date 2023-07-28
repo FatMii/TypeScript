@@ -121,5 +121,47 @@ let person: IpersonA & IpersonB = {
 
 // testAndFn({name: "黄老爷"}) // error TS2322: Type 'string' is not assignable to type 'never'.
 
+//14.类型守卫:类型保护是可执行运行时检查的一种表达式，用于确保该类型在一定的范围内。
+//(1) in
+interface InObj1 {
+  a: number;
+  x: string;
+}
+interface InObj2 {
+  a: number;
+  y: string;
+}
+function isIn(arg: InObj1 | InObj2) {
+  // x 在 arg 打印 x
+  if ("x" in arg) console.log("x");
+  // y 在 arg 打印 y
+  if ("y" in arg) console.log("y");
+}
+isIn({ a: 1, x: "xxx" });
+isIn({ a: 1, y: "yyy" });
 
-//14.类型守卫
+
+//(2) typeof 关键字
+function isTypeof( val: string | number) {
+  if (typeof val === "number") return 'number'
+  if (typeof val === "string") return 'string'
+  return '啥也不是'
+}
+
+//(3) instanceof
+function creatDate(date: Date | string){
+  console.log(date)
+  if(date instanceof Date){
+      date.getDate()
+  }else {
+      return new Date(date)
+  }
+}
+
+//(4) 自定义类型保护的类型谓词
+function isNumber(num: any): num is number {
+  return typeof num === 'number';
+}
+function isString(str: any): str is string{
+  return typeof str=== 'string';
+}
