@@ -1,3 +1,6 @@
+//“类型断言更像是类型的选择，而不是类型转换”
+
+
 //两种写法
 
 //1.尖括号
@@ -5,8 +8,7 @@
 let str: any = "to be or not to be";
 let strLength: number = (<string>str).length;
 
-//2.as 写法
-
+//2.as 写法 (推荐以 as 方式，因为 jsx 这样的语法中只支持 as 方式。)
 let strLength1: number = (str as string).length;
 
 //3.非空断言
