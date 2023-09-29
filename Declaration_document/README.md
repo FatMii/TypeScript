@@ -76,19 +76,99 @@ npm install @types/jquery --save-dev
 - 直接扩展全局变量：通过 <script> 标签引入后，改变一个全局变量的结构
 
 
-## 2.库的类型
-
-1.全局库
-
-   全局库是指能在全局命名空间下访问的（例如：不需要使用任何形式的import）。 许多库都是简单的暴露出一个或多个全局变量。 比如，如果你使用过 jQuery，$变量可以被够简单的引用：
-
-2.模块化库
-
-  一些库只能工作在模块加载器的环境下。 比如，像 express只能在Node.js里工作所以必须使用CommonJS的require函数加载。
-  (express,gulp)
 
 
-UMD模块:
+## declare var/const/let
+用来定义一个全局变量的类型;
 
-UMD模块是指那些既可以作为模块使用（通过导入）又可以作为全局（在没有模块加载器的环境里）使用的模块。 许多流行的库，比如 Moment.js，就是这样的形式。 比如，在Node.js或RequireJS里，你可以这样写
-大多数流行的库现在都能够被当成UMD包。 比如 jQuery,Moment.js,lodash和许多其它的。
+```dotnetcli
+interface myInfoType {
+    name?: string;
+    age?: number;
+    [params:string]: any;
+}
+declare var myInfo:myInfoType;
+declare let myInfo:myInfoType;
+declare const myInfo:myInfoType; //此时全局变量是一个常量不允许修改
+// 一般来说，全局变量都是禁止修改的常量，所以大部分情况都应该使用 const 而不是 var 或 let。
+```
+
+
+需要注意的是，声明语句中只能定义类型，切勿在声明语句中定义具体的实现
+```dotnetcli
+declare const test = function(para) {
+    return para;
+}
+//An implementation cannot be declared in ambient contexts.
+```
+
+## declare function 用来定义全局函数的类型
+
+```dotnetcli
+declare function test(para: string):any;
+```
+
+```dotnetcli
+统一也是只能定义类型 不能定义具体实现；
+declare function test(para: string):any{
+    return para;
+//An implementation cannot be declared in ambient contexts.ts(1183)
+```
+
+
+## declare class
+当全局变量是一个类的时候，我们用 declare class 来定义它的类型
+```dotnetcli
+
+declare class student {
+    name: string;
+    constructor(name: string);
+    hello(): string;
+
+同样的，declare class 语句也只能用来定义类型，不能用来定义具体的实现，比如定义 hello` 方法的具体实现则会报错：
+```
+
+
+```dotnetcli
+
+declare class student {
+    name: string;
+    constructor(name: string);
+    hello(){
+        return this.name;
+    };
+}
+//An implementation cannot be declared in ambient contexts.ts(1183)
+```
+
+
+## declare namespace
+namespace 是 ts 早期时为了解决模块化而创造的关键字，中文称为命名空间。
+
+随着 ES6 的广泛应用，现在已经不建议再使用 ts 中的 namespace，而推荐使用 ES6 的模块化方案了，故我们不再需要学习 namespace 的使用了。
+
+namespace 被淘汰了，但是在声明文件中，declare namespace 还是比较常用的，它用来表示全局变量是一个对象，包含很多子属性。
+
+```dotnetcli
+declare namespace jQuery {
+    function ajax(url: string, settings?: any): void;
+}
+```
+
+
+## 防止命名冲突
+暴露在最外层的 interface 或 type 会作为全局类型作用于整个项目中，我们应该尽可能的减少全局变量或全局类型的数量。故最好将他们放到 namespace 下
+
+```dotnetcli
+declare namespace fetchSetting {
+    interface fetchOptions {
+        method?: 'GET' | 'POST';
+        credentials?: string;
+        [params: string]: any;
+    }
+}
+let options: fetchSetting.fetchOptions = {
+    method: 'GET',
+    credentials: 'include'
+}
+```
