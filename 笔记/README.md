@@ -22,7 +22,8 @@
 ## 缺点
 
 ## 运行准备
-```
+
+```javascript
 安装：npm install -g typescript
 
 查看版本 tsc -v
@@ -40,7 +41,7 @@ tsc -w 执行启动
 ts-node index.ts
 ```
 
-```
+```javascript
 配置文件
 {
   "compilerOptions": {
@@ -97,3 +98,37 @@ ts-node index.ts
 }
 
 ```
+
+
+# 协变、逆变、双变和抗变的理解？
+
+1. 协变：X=Y Y类型可以赋值给X类型的情况。也可以说是X类型兼容Y类型
+
+```javascript
+interface X { name: string; age: number; } 
+interface Y { name: string; age: number; hobbies: string[] }
+let x: X = { name: 'xiaoming', age: 16 }
+let y: Y = { name: 'xiaohong', age: 18, hobbies: ['eat'] }
+x = y
+
+```
+
+2. 双变：methodY=methodX 函数X类型可以赋值给函数Y类型，因为函数Y在调用的时候参数是按照Y类型进行约束的，但是用到的是函数X的属性和方法。
+
+```javascript
+let methodY: (y: Y) => void
+methodY = (y) => { console.log(y.hobbies) }
+let methodX: (x: X) => void
+methodX = (x) => { console.log(x.name) }
+methodY = methodX
+
+```
+
+3. 双变（双向协变）：X = Y；Y = X 
+   
+   父类型可以赋值给子类型，子类型可以赋值给父类型，既逆变又协变。（ts2.x 之前支持这种赋值，之后 ts 加了一个编译选项 strictFunctionTypes，设置为 true 就只支持函数参数的逆变，设置为 false 则支持双向协变）
+
+4. 抗变（不变）：非父子类型之间不会发生型变，只要类型不一样就会报错.
+
+
+

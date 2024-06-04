@@ -30,6 +30,7 @@ let a1: any = null;
 let a2: any = 1;
 
 //5.unknown类型，可以看作是安全版的any类型
+
 //unknown类型和any的最大区别：
 //任何类型的值可以赋值给any，同时any类型的值也可以赋值给任何类型。
 //unknown 任何类型的值都可以赋值给它，但它只能赋值给unknown和any
@@ -54,6 +55,14 @@ u2 = 12;
 //例如， never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；
 //变量也可能是 never类型，当它们被永不为真的类型保护所约束时。
 //never类型包含(null,undefined)
+
+// never和void的区别
+
+// void表示没有任何类型（可以被赋值为null和undefined）
+// never表示一个不包含值的类型，即表示永远不存在的值。
+// 拥有void返回值类型的函数能正常运行。拥有never返回值类型的函数无法正常返回，无法终止，或会抛出异常。
+
+
 
 // 返回never的函数必须存在无法达到的终点
 function error(message: string): never {
