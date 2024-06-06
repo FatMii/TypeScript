@@ -129,7 +129,7 @@ methodY = methodX
    
    父类型可以赋值给子类型，子类型可以赋值给父类型，既逆变又协变。（ts2.x 之前支持这种赋值，之后 ts 加了一个编译选项 strictFunctionTypes，设置为 true 就只支持函数参数的逆变，设置为 false 则支持双向协变）
 
-
+  **逆变(Contravariance)与双变(Bivariance)只针对函数有效。**
 
 4. 抗变（不变）：非父子类型之间不会发生型变，只要类型不一样就会报错.
 
