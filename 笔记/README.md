@@ -112,8 +112,9 @@ let y: Y = { name: 'xiaohong', age: 18, hobbies: ['eat'] }
 x = y
 
 ```
+相当于是Y继承了X，Y赋值给X，就是协变
 
-2. 双变：methodY=methodX 函数X类型可以赋值给函数Y类型，因为函数Y在调用的时候参数是按照Y类型进行约束的，但是用到的是函数X的属性和方法。
+2. 逆变：methodY=methodX 函数X类型可以赋值给函数Y类型，因为函数Y在调用的时候参数是按照Y类型进行约束的，但是用到的是函数X的属性和方法。
 
 ```javascript
 let methodY: (y: Y) => void
@@ -128,7 +129,7 @@ methodY = methodX
    
    父类型可以赋值给子类型，子类型可以赋值给父类型，既逆变又协变。（ts2.x 之前支持这种赋值，之后 ts 加了一个编译选项 strictFunctionTypes，设置为 true 就只支持函数参数的逆变，设置为 false 则支持双向协变）
 
-https://zhuanlan.zhihu.com/p/546472357
+
 
 4. 抗变（不变）：非父子类型之间不会发生型变，只要类型不一样就会报错.
 
