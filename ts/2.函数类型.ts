@@ -12,7 +12,7 @@ function getResultInfo(...result: number[]): void {
 
 getResultInfo(1, 2, 3, 4, 5);
 
-//函数重载
+//函数重载：参数类型，参数个数，返回类型不同
 /* function getName(name: string);
   
   function getName(name: string, id: number);
