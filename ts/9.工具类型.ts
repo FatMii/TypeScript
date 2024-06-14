@@ -11,13 +11,22 @@ const user2: Required<Person2> = {
   hobby: ["code"],
 };
 
+/**
+ * 原理
+ * Make all properties in T optional
+ */
+//  type Partial<T> = {
+//   [P in keyof T]-?: T[P];
+// }
+//  -? 符号用于移除这些属性上的可选性
+
 //2.Partial
 //与 Required 相反，将所有属性转换为可选属性
-// type User = Partial<Person>
+type PartialUser = Partial<Person>
 
-// const shuge: User={
-//   name:'树哥'
-// } // 编译正确
+const shuge: PartialUser={
+  name:'树哥'
+} // 编译正确
 
 /**
  * 原理
