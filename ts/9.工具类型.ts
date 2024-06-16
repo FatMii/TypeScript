@@ -163,7 +163,7 @@ type P1 = Parameters<(a: number, b: string) => void>; // [number, string]
  * Obtain the parameters of a function type in a tuple
  */
 //  type Parameters<T extends (...args: any) => any> = 
-//  T extends (...args: infer P) => any ? P : neve
+//  T extends (...args: infer P) => any ? P : never
 
 //12.InstanceType 返回构造函数类型T的实例类型
 class C {
