@@ -19,13 +19,13 @@ $('body')
 ```
 
 但是在 ts 中，编译器并不知道 $ 或 jQuery 是什么东西:
-```dotnetcli
+```javascript
 $('body') //Cannot find name '$'. Do you need to install type definitions for jQuery? Try `npm i @types/jquery`.
 ```
 
 这时，我们需要使用 declare var 来定义它的类型:
 
-```dotnetcli
+```javascript
 declare var $: (selector: string) => any;
 $('body')
 ```
@@ -38,7 +38,7 @@ declare var 并没有真的定义一个变量，只是定义了全局变量 $ �
 
 通常我们会把声明语句放到一个单独的文件（index.d.ts）中，这就是声明文件：
 
-```dotnetcli
+```javascript
 interface myInfoType {
     name?: string;
     age?: number;
@@ -57,7 +57,7 @@ declare const $: (selector: string) => any;
 
 @types 的使用方式很简单，直接用 npm 安装对应的声明模块即可，以 jQuery 举例：
 
-```dotnetcli
+```javascript
 npm install @types/jquery --save-dev
 ```
 
@@ -81,7 +81,7 @@ npm install @types/jquery --save-dev
 ## declare var/const/let
 用来定义一个全局变量的类型;
 
-```dotnetcli
+```javascript
 interface myInfoType {
     name?: string;
     age?: number;
@@ -95,7 +95,7 @@ declare const myInfo:myInfoType; //此时全局变量是一个常量不允许修
 
 
 需要注意的是，声明语句中只能定义类型，切勿在声明语句中定义具体的实现
-```dotnetcli
+```javascript
 declare const test = function(para) {
     return para;
 }
@@ -104,11 +104,11 @@ declare const test = function(para) {
 
 ## declare function 用来定义全局函数的类型
 
-```dotnetcli
+```javascript
 declare function test(para: string):any;
 ```
 
-```dotnetcli
+```javascript
 统一也是只能定义类型 不能定义具体实现；
 declare function test(para: string):any{
     return para;
@@ -118,18 +118,19 @@ declare function test(para: string):any{
 
 ## declare class
 当全局变量是一个类的时候，我们用 declare class 来定义它的类型
-```dotnetcli
+
+```javascript
 
 declare class student {
     name: string;
     constructor(name: string);
     hello(): string;
 
-同样的，declare class 语句也只能用来定义类型，不能用来定义具体的实现，比如定义 hello` 方法的具体实现则会报错：
 ```
 
+同样的，declare class 语句也只能用来定义类型，不能用来定义具体的实现，比如定义 hello` 方法的具体实现则会报错：
 
-```dotnetcli
+```javascript
 
 declare class student {
     name: string;
@@ -151,7 +152,7 @@ namespace本质上是带有名字的js对象
 
 namespace 被淘汰了，但是在声明文件中，declare namespace 还是比较常用的，它用来表示全局变量是一个对象，包含很多子属性。
 
-```dotnetcli
+```javascript
 declare namespace jQuery {
     function ajax(url: string, settings?: any): void;
 }
@@ -161,7 +162,7 @@ declare namespace jQuery {
 ## 防止命名冲突
 暴露在最外层的 interface 或 type 会作为全局类型作用于整个项目中，我们应该尽可能的减少全局变量或全局类型的数量。故最好将他们放到 namespace 下
 
-```dotnetcli
+```javascript
 declare namespace fetchSetting {
     interface fetchOptions {
         method?: 'GET' | 'POST';
