@@ -65,6 +65,7 @@ u2 = 12;
 
 
 // 返回never的函数必须存在无法达到的终点
+// 无法到达终点的意思就是：正常一个函数都会有return，如果你没写return，也会自动帮你写一个return undefined. 如果函数返回never，这个函数就没有return。
 function error(message: string): never {
   throw new Error(message);
 }
