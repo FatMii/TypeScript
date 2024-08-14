@@ -91,7 +91,8 @@ const pink: Color = Color.PINK;
 console.log(pink); // 粉色
 
 //10.Object
-//object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
+// object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
+// Object存储的类型是可以调用的Object方法的类型，也可以存储原始类型。null和undefined依然不行。
 
 //11.联合类型:1.赋值的时候确定是哪个类型
 // let variable: string | number;
