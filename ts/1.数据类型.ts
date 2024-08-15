@@ -38,6 +38,15 @@ let a2: any = 1;
 //6.void类型,一般只用在函数没有返回值
 function get(): void {}
 
+// 有个特殊情况用type定义void的函数
+type LogFunc = () => void
+const f1:LogFunc =function(){ return 66 }
+let x =f1(); console.log(x); // 66
+
+//因为要考虑Array.prototype.push方法会返回一个number，如果在一个foreach里面调用push方法，严格限制就会有问题
+
+
+
 //7.null类型
 //null和undefined是所有类型的子类型
 //但是如果指定了 --strictNullChecks 标记，null 和 undefined 只能赋值给 void 和它们各自，不然会报错。
