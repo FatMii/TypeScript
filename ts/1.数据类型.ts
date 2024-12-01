@@ -101,7 +101,44 @@ console.log(pink); // 粉色
 
 //10.Object
 // object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。
+// let a: object
+// a= {} ✔
+// a= {name:'tome'} ✔
+// a=[2,3] ✔
+// a=function(){} ✔ 
+// a= new String('123')✔ 
+// class Person{} ✔ 
+// a= new Person ✔ 
+
+// a = 1 ✖ 警告
+// a = true ✖ 警告
+// a = '你好' ✖ 警告
+// a = null ✖ 警告
+// a = undefined ✖ 警告
+
 // Object存储的类型是可以调用的Object方法的类型，也可以存储原始类型。null和undefined依然不行。
+// let b: Object
+// b= {} ✔
+// b= {name:'tome'} ✔
+// b=[2,3] ✔
+// b=function(){} ✔ 
+// b= new String('123')✔ 
+// class Person{} ✔ 
+// b= new Person ✔ 
+
+// b = 1 ✔ 
+// b = true ✔ 
+// b = '你好' ✔ 
+// b = null  ✖
+// b = undefined ✖
+
+// 那么如何声明一个对象类型呢？用Object或者object都太宽泛了，所以有两种方式
+// 1. 字面量方式
+// let a: { name: string; age: number } = { name: 'tome', age: 18 };
+
+// 2. 字面量方式： 上面的声明有局限性。后面新增其他字段的时候没法兼容
+// let a:{name:string,age:number,[key:string]:any}
+
 
 //11.联合类型:1.赋值的时候确定是哪个类型
 // let variable: string | number;
