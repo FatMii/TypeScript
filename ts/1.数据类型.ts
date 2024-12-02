@@ -43,8 +43,10 @@ type LogFunc = () => void
 const f1:LogFunc =function(){ return 66 }
 let x =f1(); console.log(x); // 66
 
-//因为要考虑Array.prototype.push方法会返回一个number，如果在一个foreach里面调用push方法，严格限制就会有问题
-
+//因为要考虑Array.prototype.push方法会返回一个number，如果在一个forEach里面调用push方法，严格限制就会有问题
+// const src = [1,2,3]
+// const dst = [0];
+// src.forEach(item => dst.push(item))
 
 
 //7.null类型
