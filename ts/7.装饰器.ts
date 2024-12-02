@@ -63,11 +63,11 @@ httpClient.getData(); */
 //2.属性装饰器
 
 function logProperty(params: any) {
-  return function (target: any,arr:any) {
+  return function (target: any, arr: any) {
     console.log(params);
-    console.log(target); // 类的原型对象
-    console.log(arr);   // 属性名字key
-    target[arr] =params
+    console.log(target); // 对于实例属性是类的原型对象，对于静态属性来说值就是类。
+    console.log(arr); // 属性名字key
+    target[arr] = params;
   };
 }
 class HttpClient {
@@ -81,4 +81,30 @@ class HttpClient {
 var httpClient = new HttpClient("xxxx");
 console.log(httpClient.url);
 
-//3.装饰器执行顺序 属性=>方法=>方法参数=>类 ,如果有多个相同类型的装饰器,执行顺序从后到前
+
+//3.方法装饰器
+function Logger(
+  target: object,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
+) {
+  // 存储原始方法
+  const originnal = descriptor.value;
+  // 替换原始方法
+  descriptor.value = function (...args) {
+    console.log(`${propertyKey}开始执行。。。。`);
+    originnal.call(this, ...args);
+    console.log(`${propertyKey}结束执行。。。。。`);
+  };
+}
+
+class Person1 {
+  constructor(public name: string, public age: number) {}
+  @Logger
+  say(message: string) {
+    console.log(message);
+  }
+}
+
+// 4. 装饰器执行顺序 属性=>方法=>方法参数=>类 ,如果有多个相同类型的装饰器,执行顺序从后到前
+
