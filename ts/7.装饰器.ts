@@ -1,3 +1,4 @@
+// 装饰器函数会在类定义的时候就执行
 //1.类装饰器
 /* 不带参数 
 function logClass(params: any) {
@@ -34,6 +35,7 @@ class HttpClient {
 var httpClient = new HttpClient(); */
 
 //操作构造函数
+// 如果类装饰器返回一个新的类，那这个新类将替换掉被装饰的类
 /* function logClass(params: any) {
   console.log(params);
   return class extends params {
@@ -63,8 +65,8 @@ httpClient.getData(); */
 function logProperty(params: any) {
   return function (target: any,arr:any) {
     console.log(params);
-    console.log(target);
-    console.log(arr);
+    console.log(target); // 类的原型对象
+    console.log(arr);   // 属性名字key
     target[arr] =params
   };
 }

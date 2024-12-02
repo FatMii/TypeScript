@@ -115,7 +115,7 @@ var p1: P = { name: "1", age: 28, sex: "2" };
 
 
 //type与interface差异与相同
-//type不会创建一个新类型
+//interface不会创建一个新类型
 //语法不同
 // type MyTYpe = {
 //   name: string;
@@ -176,3 +176,8 @@ interface Person {
 interface Person {
   age: number
 }
+
+
+// interface和抽象类有什么区别？
+// interface只能定义结构，不能有具体实现
+// 抽象类可以有具体实现方法

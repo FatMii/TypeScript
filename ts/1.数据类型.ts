@@ -47,6 +47,7 @@ let x =f1(); console.log(x); // 66
 // const src = [1,2,3]
 // const dst = [0];
 // src.forEach(item => dst.push(item))
+// 换句话说，如果做了严格限制，那上面的语句就无法实现。
 
 
 //7.null类型
