@@ -107,4 +107,37 @@ class Person1 {
 }
 
 // 4. 装饰器执行顺序 属性=>方法=>方法参数=>类 ,如果有多个相同类型的装饰器,执行顺序从后到前
+// 如果存在装饰器工厂的情况下（也就是带参数），就先从上到下执行装饰器工厂，得到装饰器函数后，再从下到上
+function test1(target: Function){
+  console.log("test1");
+}
+function test2(){
+  console.log("test2工厂");
+  return function (target: Function){
+    console.log("test2");
+  }
+}
 
+function test3(){
+  console.log("test3工厂");
+  return function (target: Function){
+    console.log("test3");
+  }
+}
+
+function test4(target: Function){
+  console.log("test4");
+}
+
+@test1
+@test2()
+@test3()
+@test4
+class Person2{}
+
+// test2工厂
+// test3工厂
+// test4
+// test3
+// test2
+// test1
