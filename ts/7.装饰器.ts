@@ -1,110 +1,108 @@
 // 装饰器函数会在类定义的时候就执行
 //1.类装饰器
-/* 不带参数 
-function logClass(params: any) {
-  params.prototype.url = "xxx";
-  console.log(params);
-}
+// 不带参数: params就是HttpClient
+// function logClass(params: any) {
+//   params.prototype.url = "xxx";
+//   console.log(params); //   ƒ HttpClient_1() {}
+// }
 
-@logClass
-class HttpClient {
-  constructor() {}
+// @logClass
+// class HttpClient {
+//   constructor() {}
 
-  getData() {}
-}
+//   getData() {}
+// }
 
-var httpClient = new HttpClient();
-console.log(httpClient.url);
- */
+// var httpClient = new HttpClient();
+// console.log(httpClient.url); // xxx
 
-//带参数
-/* function logClass(params: any) {
-  return function (target: any) {
-    console.log(target);
-    console.log(params);
-  };
-}
+//带参数: params就是hello
+// function logClass(params: any) {
+//   console.log(params); // hello
+//   return function (target: any) {
+//     console.log(target); // ƒ HttpClient_1() {}
+//   };
+// }
 
-@logClass("hello")
-class HttpClient {
-  constructor() {}
+// @logClass("hello")
+// class HttpClient {
+//   constructor() {}
 
-  getData() {}
-}
+//   getData() {}
+// }
 
-var httpClient = new HttpClient(); */
+// var httpClient = new HttpClient();
 
 //操作构造函数
 // 如果类装饰器返回一个新的类，那这个新类将替换掉被装饰的类
-/* function logClass(params: any) {
-  console.log(params);
-  return class extends params {
-    url: string = "被修改后的url";
-    getData() {
-      console.log(this.url + "---");
-    }
-  };
-}
-@logClass
-class HttpClient {
-  public url: string | undefined;
-  constructor(url: string) {
-    this.url = url;
-  }
+//  function logClass(params: any) {
+//   console.log(params);
+//   return class extends params {
+//     url: string = "被修改后的url";
+//     getData() {
+//       console.log(this.url + "---");
+//     }
+//   };
+// }
+// @logClass
+// class HttpClient {
+//   public url: string | undefined;
+//   constructor(url: string) {
+//     this.url = url;
+//   }
 
-  getData() {
-    console.log(this.url);
-  }
-}
+//   getData() {
+//     console.log(this.url);
+//   }
+// }
 
-var httpClient = new HttpClient("xxxx");
-httpClient.getData(); */
+// var httpClient = new HttpClient("xxxx");
+// httpClient.getData(); 
 
 //2.属性装饰器
 
-function logProperty(params: any) {
-  return function (target: any, arr: any) {
-    console.log(params);
-    console.log(target); // 对于实例属性是类的原型对象，对于静态属性来说值就是类。
-    console.log(arr); // 属性名字key
-    target[arr] = params;
-  };
-}
-class HttpClient {
-  @logProperty("test")
-  public url: string | undefined;
-  constructor(url: string) {
-    this.url = url;
-  }
-}
+// function logProperty(params: any) {
+//   return function (target: any, arr: any) {
+//     console.log(params); // test
+//     console.log(target); // 对于实例属性是类的原型对象，对于静态属性来说值就是类。
+//     console.log(arr); // 属性名字key
+//     target[arr] = params;
+//   };
+// }
+// class HttpClient {
+//   @logProperty("test")
+//   public url: string | undefined;
+//   constructor(url: string) {
+//     this.url = url;
+//   }
+// }
 
-var httpClient = new HttpClient("xxxx");
-console.log(httpClient.url);
-
+// var httpClient = new HttpClient("xxxx");
+// console.log(httpClient.url);
 
 //3.方法装饰器
-function Logger(
-  target: object,
-  propertyKey: string,
-  descriptor: PropertyDescriptor
-) {
-  // 存储原始方法
-  const originnal = descriptor.value;
-  // 替换原始方法
-  descriptor.value = function (...args) {
-    console.log(`${propertyKey}开始执行。。。。`);
-    originnal.call(this, ...args);
-    console.log(`${propertyKey}结束执行。。。。。`);
-  };
-}
+// function Logger(
+//   target: object,
+//   propertyKey: string,
+//   descriptor: PropertyDescriptor
+// ) {
+//   // 存储原始方法
+//   const originnal = descriptor.value;
+//   // 替换原始方法
+//   descriptor.value = function (...args) {
+//     console.log(`${propertyKey}开始执行。。。。`);
+//     originnal.call(this, ...args);
+//     console.log(`${propertyKey}结束执行。。。。。`);
+//   };
+// }
 
-class Person1 {
-  constructor(public name: string, public age: number) {}
-  @Logger
-  say(message: string) {
-    console.log(message);
-  }
-}
+// class Person1 {
+//   constructor(public name: string, public age: number) {}
+//   @Logger
+//   say(message: string) {
+//     console.log(message);
+//   }
+// }
 
 // 4. 装饰器执行顺序 属性=>方法=>方法参数=>类 ,如果有多个相同类型的装饰器,执行顺序从后到前
 // 如果存在装饰器工厂的情况下（也就是带参数），就先从上到下执行装饰器工厂，得到装饰器函数后，再从下到上
