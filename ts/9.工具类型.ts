@@ -47,7 +47,7 @@ const shuge: PartialUser={
  */
 //  type Exclude<T, U> = T extends U ? never : T
 
-//4.Extract
+//4.Extract 用于从一个联合类型中提取出符合特定条件的类型
 //和 Exclude 相反，Extract<T,U> 从 T 中提取出 U。
 // type T0 = Extract<"a" | "b" | "c", "a" | "f">; // "a"
 // type T1 = Extract<string | number | (() => void), Function>; // () =>void
@@ -95,7 +95,7 @@ const shuge: PartialUser={
 //   [P in K]: T
 // }
 
-//7.Pick 从某个类型中挑出一些属性出来
+//7.Pick  用于从一个类型中选择特定的属性
 // type Person = {
 //     name: string;
 //     age:number;
@@ -131,8 +131,7 @@ const shuge: PartialUser={
  * 原理
  * Construct a type with the properties of T except for those in type K.
  */
-//  type Omit<T, K extends keyof any> = 
-//  Pick<T, Exclude<keyof T, K>
+//  type Omit<T, K extends keyof any> =  Pick<T, Exclude<keyof T, K>>
 
 //9.NonNullable 去除类型中的 null 和 undefined
 // type P1 = NonNullable<string | number | undefined>; // string | number
@@ -142,8 +141,7 @@ const shuge: PartialUser={
  * 原理
  * Exclude null and undefined from T
  */
-//  type NonNullable<T> = 
-//  T extends null | undefined ? never : T
+//  type NonNullable<T> =  T extends null | undefined ? never : T
 
 //10.ReturnType 用来得到一个函数的返回值类型
 type Func = (value: string) => string;
@@ -153,8 +151,7 @@ const test: ReturnType<Func> = "1";
  * 原理
  * Obtain the return type of a function type
  */
-//  type ReturnType<T extends (...args: any) => any> = 
-//  T extends (...args: any) => infer R ? R : any
+//  type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any
 
 //11.Parameters 用于获得函数的参数类型所组成的元组类型
 type P1 = Parameters<(a: number, b: string) => void>; // [number, string]
@@ -162,8 +159,7 @@ type P1 = Parameters<(a: number, b: string) => void>; // [number, string]
  * 原理
  * Obtain the parameters of a function type in a tuple
  */
-//  type Parameters<T extends (...args: any) => any> = 
-//  T extends (...args: infer P) => any ? P : never
+//  type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never
 
 //12.InstanceType 返回构造函数类型T的实例类型
 class C {
