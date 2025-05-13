@@ -1,5 +1,4 @@
-// 接口是对象的状态(属性)和行为(方法)的抽象(描述)
-
+// 接口是对象的状态(属性)和行为(方法)的抽象描述
 
 /**
  * 属性接口
@@ -59,8 +58,8 @@ let userArr: UserArr = ["1", "2"];
 console.log(userArr);
 
 //可索引接口对对象的约束
-//TypeScript支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。 
-//这是因为当使用 number来索引时，JavaScript会将它转换成string然后再去索引对象。 
+//TypeScript支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。
+//这是因为当使用 number来索引时，JavaScript会将它转换成string然后再去索引对象。
 //也就是说用 100（一个number）去索引等同于使用"100"（一个string）去索引，因此两者需要保持一致。
 interface UserObj {
   [index: number]: string;
@@ -71,7 +70,6 @@ let userObj: UserObj = {
   1: "22",
 };
 console.log(userObj);
-
 
 //4.类类型接口,跟抽象类相似
 interface Animal {
@@ -104,80 +102,7 @@ interface P extends Base {
 
 var p1: P = { name: "1", age: 28, sex: "2" };
 
-
 //6.接口可以继承类
-//当接口继承了一个类类型时，它会继承类的成员但不包括其实现。 就好像接口声明了所有类中存在的成员，但并没有提供具体实现一样。 
-//接口同样会继承到类的private和protected成员。 
+//当接口继承了一个类类型时，它会继承类的成员但不包括其实现。 就好像接口声明了所有类中存在的成员，但并没有提供具体实现一样。
+//接口同样会继承到类的private和protected成员。
 //这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现
-
-
-//7.混合类型
-
-
-//type与interface差异与相同
-//interface不会创建一个新类型
-//语法不同
-// type MyTYpe = {
-//   name: string;
-//   say(): void;
-// }
-
-// interface MyInterface {
-//   name: string;
-//   say(): void;
-// }
-
-//都允许扩展
-interface MyInterface {
-  name: string;
-  say(): void;
-}
-
-interface MyInterface2 extends MyInterface {
-  sex: string;
-}
-
-let person1:MyInterface2 = {
-  name:'树哥',
-  sex:'男',
-  say(): void {
-    console.log("hello 啊，树哥！");
-  }
-}
-//type 使用 & 实现扩展
-type MyType = {
-  name:string;
-  say(): void;
-}
-type MyType2 = MyType & {
-  sex:string;
-}
-let value: MyType2 = {
-  name:'树哥',
-  sex:'男',
-  say(): void {
-    console.log("hello 啊，树哥！");
-  }
-}
-
-
-//type可以声明基本数据类型别名/联合类型/元组等，而interface不行
-// type Username = string;
-// type Username = string |number
-// // 联合类型
-// type Animal = Pig | Dog | Cat;
-// type List = [string, boolean, number];
-
-//interface能够合并声明，而type不行
-
-interface Person {
-  name: string
-}
-interface Person {
-  age: number
-}
-
-
-// interface和抽象类有什么区别？
-// interface只能定义结构，不能有具体实现
-// 抽象类可以有具体实现方法
